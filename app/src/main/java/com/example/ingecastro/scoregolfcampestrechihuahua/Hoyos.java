@@ -1,6 +1,9 @@
 package com.example.ingecastro.scoregolfcampestrechihuahua;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,7 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Hoyos extends AppCompatActivity {
-    Intent inppal,inresul;
+    Intent inppal, inresul, intMusic;
+    BroadcastReceiver bcrMusic;
     TextView txvh,txvn1,txvn2;
     int hole=0,up1,up2,utj1,utj2,tj1h1,tj2h1,tj1h2,tj2h2,tj1h3,tj2h3,tj1h4,tj2h4,tj1h5,tj2h5,tj1h6,tj2h6,tj1h7,tj2h7,tj1h8,tj2h8,tj1h9,tj2h9;
     EditText edtxj1,edtxj2,edtxu1,edtxu2;
@@ -18,6 +22,18 @@ public class Hoyos extends AppCompatActivity {
     Bundle bundatosh;
     //String nomj1,nomj2;
 
+    public class MiBroadcast extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(intMusic);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +60,12 @@ public class Hoyos extends AppCompatActivity {
         txvh.setText(""+mostrar);
         txvn1.setText(""+nombrejug1);
         txvn2.setText(""+nombrejug2);
+
+        intMusic = new Intent(this, Music.class); //nuevo intento
+        IntentFilter ifMusic = new IntentFilter("MUSIC"); //FILTRO
+        bcrMusic = new MiBroadcast();
+        registerReceiver(bcrMusic, ifMusic);
+        startService(intMusic);// comienzo del servicio
 
     }
     public void clickante(View v){

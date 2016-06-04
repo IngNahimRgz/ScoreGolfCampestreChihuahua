@@ -5,11 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class Principal extends AppCompatActivity {
     Button btninstrucciones, btnjugadores, btncomienzo;
     Intent injugadores,ininstrucciones,incomienzo;
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //stopService(intMusic);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,8 @@ public class Principal extends AppCompatActivity {
 
         injugadores=new Intent(this,Jugadores.class);
         incomienzo=new Intent(this,Hoyos.class);
+
+
     }
     public void clickju(View v){
         startActivity(injugadores);
@@ -32,12 +40,12 @@ public class Principal extends AppCompatActivity {
         finish();
 
     }
-    public void clickinst(View v){
+   /* public void clickinst(View v){
         Intent inleerdatos=getIntent();
         Bundle bundatos=inleerdatos.getExtras();
         String sname;
         sname= bundatos.getString("jugadores");
         Toast.makeText(getApplicationContext(),""+sname, Toast.LENGTH_LONG).show();
 
-    }
+    }*/
 }

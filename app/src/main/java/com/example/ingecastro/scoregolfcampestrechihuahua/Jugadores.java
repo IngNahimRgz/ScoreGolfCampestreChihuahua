@@ -1,8 +1,8 @@
 package com.example.ingecastro.scoregolfcampestrechihuahua;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +17,7 @@ public class Jugadores extends AppCompatActivity {
     TextView txnum;
     Button btncam;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +30,11 @@ public class Jugadores extends AppCompatActivity {
         btncam.setText("CONFIRMAR");
 
 
+
         inhoyos=new Intent(this,Hoyos.class);
     }
+
+
     public void clickconfirmar(View v){
         players[npl]=nj.getText().toString();
         String sname,sname2;

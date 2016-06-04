@@ -18,7 +18,12 @@
         <activity android:name=".Jugadores" />
         <activity android:name=".Hoyos" />
         <activity android:name=".Resultados" />
-        <activity android:name=".score"></activity>
+        <activity android:name=".score" />
+
+        <service
+            android:name=".Music"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
