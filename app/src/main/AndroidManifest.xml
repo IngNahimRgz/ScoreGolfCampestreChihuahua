@@ -23,7 +23,9 @@
         <service
             android:name=".Music"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".JugadoresExistentes"></activity>
     </application>
 
 </manifest>

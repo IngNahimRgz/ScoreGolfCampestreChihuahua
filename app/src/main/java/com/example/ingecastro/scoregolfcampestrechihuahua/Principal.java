@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class Principal extends AppCompatActivity {
     Button btninstrucciones, btnjugadores, btncomienzo;
-    Intent injugadores,ininstrucciones,incomienzo;
+    Intent injugadores, ininstrucciones, incomienzo, intJugadoresExistentes;
 
 
     @Override
@@ -26,13 +26,18 @@ public class Principal extends AppCompatActivity {
         btnjugadores=(Button)findViewById(R.id.button2);
         btncomienzo=(Button)findViewById(R.id.button3);
 
-        injugadores=new Intent(this,Jugadores.class);
+        // injugadores=new Intent(this,Jugadores.class);
         incomienzo=new Intent(this,Hoyos.class);
+        intJugadoresExistentes = new Intent(this, JugadoresExistentes.class);
+
+
+
+
 
 
     }
     public void clickju(View v){
-        startActivity(injugadores);
+        startActivity(intJugadoresExistentes);
         finish();
     }
     public void clickcomi(View v){
