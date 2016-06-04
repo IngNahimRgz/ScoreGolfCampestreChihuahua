@@ -31,13 +31,23 @@ public class JugadoresExistentes extends AppCompatActivity {
         injugadores = new Intent(this, Jugadores.class);
         intHoyos = new Intent(this, Hoyos.class);
 
+        //SharedPreferences settings = getSharedPreferences("Jugadores", MODE_PRIVATE);
+        //boolean miValor = settings.getBoolean("Jugadores", false);
+        comprobacion();
+
+
+        //}
+    }
+
+    public void comprobacion() {
         SharedPreferences settings = getSharedPreferences("Jugadores", MODE_PRIVATE);
         boolean miValor = settings.getBoolean("Jugadores", false);
-
         if (miValor == false) {
             Toast.makeText(JugadoresExistentes.this, "No hay Jugadores. Agregalos", Toast.LENGTH_SHORT).show();
             btnBorrar.setEnabled(false);
             btnNuevoJuego.setEnabled(false);
+            txtVwJugador1.setText("Jugador 1");
+            txtVwJugador2.setText("Jugador 2");
         } else if (miValor) {
             btnBorrar.setEnabled(true);
             btnNuevoJuego.setEnabled(true);
@@ -50,7 +60,6 @@ public class JugadoresExistentes extends AppCompatActivity {
             txtVwJugador2.setText(nomJugador2);
         }
 
-        //}
     }
 
     public void clickAgregarJugadores(View v) {
@@ -68,6 +77,7 @@ public class JugadoresExistentes extends AppCompatActivity {
         editor.putString("nom1", "Jugador 1");
         editor.putString("nom2", "Jugador 2");
         editor.commit();
+        comprobacion();
 
     }
 

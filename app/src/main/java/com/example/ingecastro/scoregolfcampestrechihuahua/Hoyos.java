@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +21,7 @@ public class Hoyos extends AppCompatActivity {
     int[] hoyoj2=new int[10];
     int mostrar=1;
     Bundle bundatosh;
+    String nomJugador1, nomJugador2;
     //String nomj1,nomj2;
 
     public class MiBroadcast extends BroadcastReceiver {
@@ -45,8 +47,16 @@ public class Hoyos extends AppCompatActivity {
 
         String nombrejug1,nombrejug2;
         //int tirosjug1,tjug2h1,ujug1h1,ujug2h1;
-        nombrejug1=bundatos.getString("nom1");
-        nombrejug2=bundatos.getString("nom2");
+        //nombrejug1=bundatos.getString("nom1");
+        //nombrejug2=bundatos.getString("nom2");
+        SharedPreferences settings = getSharedPreferences("Jugadores", MODE_PRIVATE);
+        nomJugador1 = settings.getString("nom1", "null");
+        nomJugador2 = settings.getString("nom2", "null");
+
+        nombrejug1 = nomJugador1;
+        nombrejug2 = nomJugador2;
+
+
         txvn1=(TextView)findViewById(R.id.textView10);
         txvn2=(TextView)findViewById(R.id.textView11);
         txvh=(TextView)findViewById(R.id.textView6);
@@ -78,8 +88,8 @@ public class Hoyos extends AppCompatActivity {
 
         String nombrejug1,nombrejug2;
 
-        nombrejug1=bundatos.getString("nom1");
-        nombrejug2=bundatos.getString("nom2");
+        nombrejug1 = nomJugador1;
+        nombrejug2 = nomJugador2;
 
         hoyo[hole]=Integer.parseInt(edtxj1.getText().toString());
         hoyoj2[hole]=Integer.parseInt(edtxj2.getText().toString());
